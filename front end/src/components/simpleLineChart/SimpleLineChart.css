@@ -1,0 +1,28 @@
+@import '../../style/colors.css';
+
+#simpleBarChartContainer {
+    width: 33%;
+    margin: 1em;
+}
+
+#simpleBarChart {
+    background: var(--primary-color);
+    border-radius: 1em;
+    padding: 1em 1em 0 1em;
+}
+
+.lineChart-tooltip {
+    background: white;
+}
+
+.line-chart {
+    color: white;
+    font-size: 12px;
+    padding: 10px 10px;
+    font-weight: 500;
+}
+
+#lineChart-title {
+    color: #fdfdfd87;
+    font-size: 15px;
+}

@@ -1,0 +1,29 @@
+@import '../../style/colors.css';
+
+header {
+    background: var(--tertiary-color);
+    display: flex;
+    box-shadow: 5px 5px 20px var(--tertiary-color);
+}
+
+header img {
+    height: 60.93px;
+    padding: 1.5em;
+}
+
+header button {
+    cursor: pointer;
+    color: var(--secondary-color);
+    background: var(--tertiary-color);
+    border: none;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0px;
+}
+
+header nav {
+    width: 100%;
+    display: flex;
+    place-content: space-around;
+}

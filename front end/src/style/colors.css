@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+    --primary-color: #FF0101;
+    --secondary-color: #FFFFFF;
+    --tertiary-color: #020203;
+    --quaternary-color: #74798C;
+    --primary-color-transparent: #FF010112;
+    --blue-transparent: #4AB8FF12;
+    --yellow-transparent: #F9CE2312;
+    --pink-transparent: #FD518112;
+}

@@ -1,0 +1,15 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Roboto;
+}
+
+main {
+    display: flex;
+}
+
+.sr-only {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}

@@ -1,0 +1,28 @@
+@import '../../style/colors.css';
+
+#sideBar {
+    background: var(--tertiary-color);
+}
+
+#copyright {
+    color: var(--secondary-color);
+    transform: rotate(-90deg);
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 5em;
+}
+
+#sideBar nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+}
+
+#sideBar button {
+    width: 6.5em;
+    height: 6.5em;
+    margin: 1em;
+    border-radius: 15%;
+    cursor: pointer;
+}

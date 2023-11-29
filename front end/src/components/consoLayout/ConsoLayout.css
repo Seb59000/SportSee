@@ -1,0 +1,45 @@
+@import '../../style/colors.css';
+
+.consoLogo {
+    margin-top: 0.3em;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5em;
+}
+
+.consoLayout {
+    display: flex;
+    margin-bottom: 3em;
+}
+
+#energyLogo {
+    background: var(--primary-color-transparent);
+}
+
+#proteinLogo {
+    background: var(--blue-transparent);
+}
+
+#glucidLogo {
+    background: var(--yellow-transparent);
+}
+
+#fatLogo {
+    background: var(--pink-transparent);
+}
+
+.infosContainer {
+    align-self: center;
+    text-align: center;
+    padding: 1em;
+    width: 7em;
+}
+
+.bold {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 0.1em;
+}
