@@ -1,11 +1,11 @@
 @import '../../style/colors.css';
 
-#simpleBarChartContainer {
+#simpleLineChartContainer {
     width: 33%;
     margin: 1em;
 }
 
-#simpleBarChart {
+#simpleLineChart {
     background: var(--primary-color);
     border-radius: 1em;
     padding: 1em 1em 0 1em;
@@ -15,12 +15,12 @@
     background: white;
 }
 
-.line-chart {
+/* .line-chart {
     color: white;
     font-size: 12px;
     padding: 10px 10px;
     font-weight: 500;
-}
+} */
 
 #lineChart-title {
     color: #fdfdfd87;

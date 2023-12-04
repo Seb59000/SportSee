@@ -2,51 +2,6 @@ import { RadialBarChart, RadialBar, PolarAngleAxis, Legend, ResponsiveContainer 
 import mock from '../../data/mock.json'
 import './SimpleRadialBarChart.css'
 
-const data = [
-    {
-        name: '18-24',
-        uv: 31.47,
-        pv: 2400,
-        fill: '#8884d8',
-    },
-    {
-        name: '25-29',
-        uv: 26.69,
-        pv: 4567,
-        fill: '#83a6ed',
-    },
-    {
-        name: '30-34',
-        uv: 15.69,
-        pv: 1398,
-        fill: '#8dd1e1',
-    },
-    {
-        name: '35-39',
-        uv: 8.22,
-        pv: 9800,
-        fill: '#82ca9d',
-    },
-    {
-        name: '40-49',
-        uv: 8.63,
-        pv: 3908,
-        fill: '#a4de6c',
-    },
-    {
-        name: '50+',
-        uv: 2.63,
-        pv: 4800,
-        fill: '#d0ed57',
-    },
-    {
-        name: 'unknow',
-        uv: 6.67,
-        pv: 4800,
-        fill: '#ffc658',
-    },
-];
-
 const data2 = [
     { x: mock.data.score * 100, fill: 'var(--primary-color)' },
     // { name: 'B', x: mock.data.score * 100, fill: 'red' },
@@ -59,6 +14,8 @@ const data2 = [
     // { name: 'I', x: 9, fill: 'gray' },
 ];
 
+const percent = mock.data.score * 100;
+
 const style = {
     top: '50%',
     right: 0,
@@ -66,11 +23,23 @@ const style = {
     lineHeight: '24px',
 };
 
-function SimpleRadialBarChart() {
+function SimpleRadialBarChart({ data }) {
+    const data2 = [
+        { x: data * 100, fill: 'var(--primary-color)' },
+        // { name: 'B', x: mock.data.score * 100, fill: 'red' },
+        // { name: 'C', x: 3, fill: 'aqua' },
+        // { name: 'D', x: 4, fill: 'blue' },
+        // { name: 'E', x: 5, fill: 'orange' },
+        // { name: 'F', x: 6, fill: 'red' },
+        // { name: 'G', x: 7, fill: 'black' },
+        // { name: 'H', x: 8, fill: 'purple' },
+        // { name: 'I', x: 9, fill: 'gray' },
+    ];
+
     return (
-        <div id="radialChartContainer">
-            <ResponsiveContainer width="100%" aspect={1}>
-                <h2 id="radialChartTitle">Score</h2>
+        <div id="test">
+            <ResponsiveContainer width="100%" aspect={1} id="radialChart">
+                {/* <h2 id="radialChartTitle">Score</h2> */}
                 <RadialBarChart width={143} height={143} data={data2}
                     // cx={30 / 2}
                     // cy={30 / 2}
@@ -85,21 +54,25 @@ function SimpleRadialBarChart() {
                         angleAxisId={0}
                         tick={false}
                     />
+                    {/* <text
+                        x={100}
+                        y={20}
+                        textAnchor="top"
+                        dominantBaseline="top"
+                    >
+                        Score
+                    </text> */}
+
                     <RadialBar
                         background
                         dataKey="x"
                         cornerRadius={30 / 2}
                         fill="#0BEFF2"
                     />
-                    <text
-                        x={200}
-                        y={200}
-                        textAnchor="middle"
-                        dominantBaseline="middle"
-                    // className="progress-label"
-                    >
-                        Score
-                    </text>
+                    {/* <text x={170} y={180}>{percent}</text>
+                    <text x={190} y={180}>%</text>
+                    <text x={170} y={200}>de votre</text>
+                    <text x={170} y={220}>objectif</text> */}
                 </RadialBarChart>
                 {/* <RadialBarChart cx="50%" cy="50%" innerRadius="10%" outerRadius="80%" barSize={10} data={data}>
                     <RadialBar

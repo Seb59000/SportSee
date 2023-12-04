@@ -38,9 +38,25 @@ function Dashboard() {
                     </hgroup>
                     <BrushBarChart data={data.USER_ACTIVITY[0].sessions} />
                     <div id="graphsLayout">
-                        <SimpleLineChart />
-                        <SimpleRadarChart />
-                        <SimpleRadialBarChart />
+                        <SimpleLineChart data={data.USER_AVERAGE_SESSIONS[0]} />
+                        <SimpleRadarChart data={data.USER_PERFORMANCE[0].data} />
+                        <div id='radialChartContainer'>
+                            <h2 id="radialChartTitle">Score</h2>
+                            <div id='radialChartText'>
+                                <p>
+                                    {data.USER_MAIN_DATA[0].score * 100} %
+                                </p>
+                                <p>
+                                    de votre
+                                </p>
+                                <p>
+                                    objectif
+                                </p>
+                            </div>
+
+                            <SimpleRadialBarChart data={data.USER_MAIN_DATA[0].score} />
+                        </div>
+
                     </div>
                 </div>
                 <div id="conso">

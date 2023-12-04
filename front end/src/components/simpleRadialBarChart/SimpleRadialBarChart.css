@@ -3,13 +3,25 @@
     font-weight: 500;
     line-height: 24px;
     letter-spacing: 0px;
-    text-align: left;
 
-    /* position: absolute; */
-    /* padding: 1em; */
-    /* margin: 2em; */
+    position: absolute;
+    padding: 1em;
+    margin: 2em;
 }
 
 #radialChartContainer {
     width: 33%;
+    margin: 1em;
+}
+
+#radialChart {
+    border-radius: 1em;
+    padding: 1em 1em 0 1em;
+}
+
+#radialChartText {
+    position: relative;
+    top: 50%;
+    left: 20px;
+    text-align: center;
 }

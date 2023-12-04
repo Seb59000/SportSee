@@ -87,7 +87,7 @@ const CustomCursor = props => {
     return <Rectangle fill="blue" stroke="white" x={x} y={y} width={50} height={58} />;
 };
 
-function SimpleLineChart() {
+function SimpleLineChart({ data }) {
     return (
 
         // <div className="line-chart">
@@ -136,8 +136,8 @@ function SimpleLineChart() {
         //     </ResponsiveContainer>
         // </div>
 
-        <div id="simpleBarChartContainer">
-            <ResponsiveContainer width="100%" aspect={1} id="simpleBarChart">
+        <div id="simpleLineChartContainer">
+            <ResponsiveContainer width="100%" aspect={1} id="simpleLineChart">
                 {/* <LineChart width={300} height={100} data={mock.data.averageSessions}>
                     <Legend content={renderLegend} align='right' />
                     <Line type="monotone" dataKey="sessionLength" fill="linear-gradient(180deg, rgba(251,250,255,0.5802696078431373) 0%, rgba(251,251,252,1) 100%, rgba(249,249,249,1) 100%)" strokeWidth={2} dot={false} />
@@ -145,7 +145,7 @@ function SimpleLineChart() {
                     <Tooltip content={<CustomTooltip />} position={{ y: 0 }} contentStyle={{ backgroundColor: "blue" }} itemStyle={{ color: "green" }} />
                     <ReferenceArea x1={150} x2={180} y1={200} y2={300} stroke="red" strokeOpacity={0.3} />
                 </LineChart> */}
-                <LineChart width={500} height={500} data={mock.data.averageSessions}>
+                <LineChart width={500} height={500} data={data.sessions}>
                     <defs>
                         <linearGradient id="colorGradiant" x1="0%" y1="0%" x2="100%" y2="0%">
                             <stop offset="0%" stopColor="#ffffff80" />

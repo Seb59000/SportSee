@@ -41,7 +41,7 @@ function BrushBarChart({ data }) {
     return (
         <div id="brushBarChart">
             {/* <ResponsiveContainer width={820} height={300} id="brushBarChart"> */}
-            <ResponsiveContainer maxHeight={400} width="100%" aspect={3} >
+            <ResponsiveContainer maxHeight={400} width="100%" aspect={5} >
                 {/* {console.log(mock.data.averageSessions)} */}
                 <BarChart
                     // width={820}
@@ -58,8 +58,8 @@ function BrushBarChart({ data }) {
                         strokeDasharray="2 2"
                         vertical={false}
                     />
-                    <XAxis tickLine={false} tick={<CustomTick />} />
-                    <YAxis orientation='right' axisLine={false} tickLine={false} tickCount={4} type="number" data="kilogram" domain={[69, 'auto']} />
+                    <XAxis scale='point' tickLine={false} tick={<CustomTick />} stroke='white' />
+                    <YAxis orientation='right' axisLine={false} tickLine={false} tickCount={3} type="number" data="kilogram" domain={[69, 'auto']} tickMargin={50} />
                     <Tooltip
                         animationEasing="ease-out"
                         content={<CustomTooltip />}
