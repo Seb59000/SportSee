@@ -1,14 +1,15 @@
 @import '../../style/colors.css';
 
 #simpleLineChartContainer {
-    width: 33%;
-    margin: 1em;
+    /* width: 33%; */
+    /* margin: 1em; */
 }
 
 #simpleLineChart {
+    /* margin: 1em;
     background: var(--primary-color);
     border-radius: 1em;
-    padding: 1em 1em 0 1em;
+    padding: 1em 1em 0 1em; */
 }
 
 .lineChart-tooltip {
@@ -23,6 +24,6 @@
 } */
 
 #lineChart-title {
-    color: #fdfdfd87;
-    font-size: 15px;
+    /* color: #fdfdfd87;
+    font-size: 15px; */
 }

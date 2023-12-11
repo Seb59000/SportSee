@@ -2,35 +2,39 @@ import { Radar, Text, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Re
 import mock from '../../data/mock.json'
 import types from '../../data/types.json'
 import './SimpleRadarChart.css'
+import PropTypes from 'prop-types';
 
 const CustomTick = ({ index, x, y, cx, cy }) => {
     // console.log(x)
     let xTransformed
     if (x < 60) {
         if (y < 200) {
-            xTransformed = x - 50;
+            xTransformed = x - 40;
 
         } else {
-            xTransformed = x - 45;
+            xTransformed = x - 32;
         }
-    } else if (x >= 50 && x < 270) {
+    } else if (x > 50 && x < 170) {
         xTransformed = x - 20;
-    } else if (x > 270) {
+    } else if (x > 170) {
         if (y < 200) {
-            xTransformed = x - 5;
+            xTransformed = x - 22;
 
         } else {
-            xTransformed = x - 20;
+            xTransformed = x - 30;
         }
     }
 
     let yTransformed
-    if (y < 100) {
+    if (y < 40) {
+        yTransformed = y - 15;
+    }
+    else if (y < 100) {
         yTransformed = y - 20;
-    } else if (y > 100 && y < 300) {
-        yTransformed = y + (y - cy) / 4;
-    } else {
+    } else if (y >= 100 && y < 270) {
         yTransformed = y + 20;
+    } else {
+        yTransformed = y + 10;
     }
 
     return (
@@ -61,7 +65,8 @@ function SimpleRadarChart({ data }) {
     // console.log(mock.data.data)
     return (
         <div id="radarChartContainer">
-            <ResponsiveContainer width="100%" aspect={1} id="radarChart">
+            <ResponsiveContainer width={285} height={290} id="radarChart">
+                {/* <ResponsiveContainer width="100%" aspect={1} id="radarChart"> */}
                 {/* <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}> */}
                 <RadarChart data={data}>
                     {/* <PolarGrid /> */}
@@ -77,6 +82,10 @@ function SimpleRadarChart({ data }) {
             </ResponsiveContainer>
         </div>
     );
+}
+
+SimpleRadarChart.propTypes = {
+    data: PropTypes.object
 }
 
 export default SimpleRadarChart;

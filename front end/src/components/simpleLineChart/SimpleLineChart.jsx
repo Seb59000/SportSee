@@ -1,7 +1,6 @@
 import './SimpleLineChart.css';
-import mock from '../../data/mock.json'
 import { Rectangle, ReferenceArea, AreaChart, Area, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
+import PropTypes from 'prop-types';
 
 const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
@@ -14,6 +13,19 @@ const CustomTooltip = ({ active, payload }) => {
     return null;
     // return <Rectangle width={80} fill='blue' x={100} y={100} height={100}></Rectangle>
 };
+// const CustomTooltip = ({ active, payload, label }) => {
+//     if (active && payload && payload.length) {
+//         return (
+//             <div className="custom-tooltip">
+//                 <p className="label">{`${label} : ${payload[0].value}`}</p>
+//                 <div className="active-dot" style={{ backgroundColor: "blue", position: "absolute", left: payload[0].cx, top: payload[0].cy, width: 10, height: 10, borderRadius: 5 }} />
+//                 <div className="active-rect" style={{ backgroundColor: "yellow", position: "absolute", left: payload[0].cx, top: payload[0].cy, width: 100, height: 50 }} />
+//             </div>
+//         );
+//     }
+
+//     return null;
+// };
 
 const renderLegend = () => {
     return <h2 id='lineChart-title'>Durée moyenne des <br />sessions</h2>
@@ -23,43 +35,43 @@ const CustomTick = ({ index, x, y }) => {
     switch (index) {
         case 0:
             return (
-                <text x={x - 5} y={y + 10} fill='#f0bab4'>
+                <text x={x + 10} y={y + 20} fill='#f0bab4'>
                     L
                 </text>
             );
         case 1:
             return (
-                <text x={x - 5} y={y + 10} fill='#f0bab4'>
+                <text x={x + 5} y={y + 20} fill='#f0bab4'>
                     M
                 </text>
             );
         case 2:
             return (
-                <text x={x - 5} y={y + 10} fill='#f0bab4'>
+                <text x={x} y={y + 20} fill='#f0bab4'>
                     M
                 </text>
             );
         case 3:
             return (
-                <text x={x - 5} y={y + 10} fill='#f0bab4'>
+                <text x={x - 5} y={y + 20} fill='#f0bab4'>
                     J
                 </text>
             );
         case 4:
             return (
-                <text x={x - 5} y={y + 10} fill='#f0bab4'>
+                <text x={x - 10} y={y + 20} fill='#f0bab4'>
                     V
                 </text>
             );
         case 5:
             return (
-                <text x={x - 5} y={y + 10} fill='#f0bab4'>
+                <text x={x - 15} y={y + 20} fill='#f0bab4'>
                     S
                 </text>
             );
         case 6:
             return (
-                <text x={x - 5} y={y + 10} fill='#f0bab4'>
+                <text x={x - 20} y={y + 20} fill='#f0bab4'>
                     D
                 </text>
             );
@@ -137,7 +149,8 @@ function SimpleLineChart({ data }) {
         // </div>
 
         <div id="simpleLineChartContainer">
-            <ResponsiveContainer width="100%" aspect={1} id="simpleLineChart">
+            <ResponsiveContainer width={310} height={280} id="simpleLineChart">
+                {/* <ResponsiveContainer width="100%" aspect={1} id="simpleLineChart"> */}
                 {/* <LineChart width={300} height={100} data={mock.data.averageSessions}>
                     <Legend content={renderLegend} align='right' />
                     <Line type="monotone" dataKey="sessionLength" fill="linear-gradient(180deg, rgba(251,250,255,0.5802696078431373) 0%, rgba(251,251,252,1) 100%, rgba(249,249,249,1) 100%)" strokeWidth={2} dot={false} />
@@ -145,7 +158,8 @@ function SimpleLineChart({ data }) {
                     <Tooltip content={<CustomTooltip />} position={{ y: 0 }} contentStyle={{ backgroundColor: "blue" }} itemStyle={{ color: "green" }} />
                     <ReferenceArea x1={150} x2={180} y1={200} y2={300} stroke="red" strokeOpacity={0.3} />
                 </LineChart> */}
-                <LineChart width={500} height={500} data={data.sessions}>
+                <LineChart data={data.sessions}>
+                    {/* <LineChart width={500} height={500} data={data.sessions}> */}
                     <defs>
                         <linearGradient id="colorGradiant" x1="0%" y1="0%" x2="100%" y2="0%">
                             <stop offset="0%" stopColor="#ffffff80" />
@@ -153,7 +167,7 @@ function SimpleLineChart({ data }) {
                             <stop offset="100%" stopColor="#ffffff" />
                         </linearGradient>
                     </defs>
-                    <Legend content={renderLegend} verticalAlign="top" />
+                    {/* <Legend content={renderLegend} verticalAlign="top" /> */}
                     <Line
                         type="bump"
                         dataKey="sessionLength"
@@ -164,12 +178,18 @@ function SimpleLineChart({ data }) {
                     <XAxis dataKey="day" tick={<CustomTick />} tickLine={false} axisLine={false} />
                     {/* <Tooltip cursor={<CustomCursor />} content={<CustomTooltip />} position={{ y: 0 }} /> */}
                     <Tooltip content={<CustomTooltip />} position={{ y: 0 }} />
+                    {/* <Tooltip cursor={{ stroke: "#29BDAD", strokeDasharray: 5 }} active={true} content={<CustomTooltip />} /> */}
                     <ReferenceArea x1={150} x2={180} y1={200} y2={300} stroke="red" strokeOpacity={0.3} />
                 </LineChart>
             </ResponsiveContainer>
         </div>
 
     );
+}
+
+
+SimpleLineChart.propTypes = {
+    data: PropTypes.object
 }
 
 export default SimpleLineChart; 

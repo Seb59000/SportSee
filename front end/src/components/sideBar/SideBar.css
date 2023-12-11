@@ -22,7 +22,7 @@
 #sideBar button {
     width: 6.5em;
     height: 6.5em;
-    margin: 1em;
+    margin: 1em 2.5em;
     border-radius: 15%;
     cursor: pointer;
 }

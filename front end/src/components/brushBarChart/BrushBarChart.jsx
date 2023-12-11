@@ -9,6 +9,7 @@ import {
     CartesianGrid,
     ResponsiveContainer,
 } from 'recharts';
+import PropTypes from 'prop-types';
 
 const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
@@ -33,20 +34,20 @@ const CustomTick = ({ index, x, y }) => {
 function BrushBarChart({ data }) {
 
     // console.log(data)
-    const dataFormatted = data.map(function (item) {
-        // item.calories = item.calories * 10
+    const dataFormated = data.map(function (item) {
+        // item.calories = item.calories / 10
         return item;
     });
-    // console.log(dataFormatted)
+    // console.log(dataFormated)
     return (
         <div id="brushBarChart">
-            {/* <ResponsiveContainer width={820} height={300} id="brushBarChart"> */}
-            <ResponsiveContainer maxHeight={400} width="100%" aspect={5} >
+            <ResponsiveContainer width={1050} height={210} id="brushBarChart">
+                {/* <ResponsiveContainer maxHeight={400} width="100%" aspect={5} > */}
                 {/* {console.log(mock.data.averageSessions)} */}
                 <BarChart
                     // width={820}
                     // height={300}
-                    data={data}
+                    data={dataFormated}
                     margin={{
                         top: 5,
                         right: 30,
@@ -72,6 +73,10 @@ function BrushBarChart({ data }) {
             </ResponsiveContainer>
         </div>
     );
+}
+
+BrushBarChart.propTypes = {
+    data: PropTypes.object
 }
 
 export default BrushBarChart;
