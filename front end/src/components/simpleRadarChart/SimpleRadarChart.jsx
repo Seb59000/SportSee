@@ -1,5 +1,4 @@
 import { Radar, Text, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
-import mock from '../../data/mock.json'
 import types from '../../data/types.json'
 import './SimpleRadarChart.css'
 import PropTypes from 'prop-types';
@@ -85,7 +84,7 @@ function SimpleRadarChart({ data }) {
 }
 
 SimpleRadarChart.propTypes = {
-    data: PropTypes.object
+    data: PropTypes.array
 }
 
 export default SimpleRadarChart;

@@ -22,7 +22,7 @@ function ConsoLayout({ data, logo, text1, text2, id, alt }) {
 
 ConsoLayout.propTypes = {
     data: PropTypes.number,
-    logo: PropTypes.object,
+    logo: PropTypes.string,
     // logo: ImageNative.propTypes.Image,
     // source: ImageNative.propTypes.source.isRequired
     text1: PropTypes.string,

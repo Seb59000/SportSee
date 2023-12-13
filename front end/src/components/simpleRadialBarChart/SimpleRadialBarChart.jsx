@@ -1,28 +1,6 @@
 import { RadialBarChart, RadialBar, PolarAngleAxis, Legend, ResponsiveContainer } from 'recharts';
-import mock from '../../data/mock.json'
 import './SimpleRadialBarChart.css'
 import PropTypes from 'prop-types';
-
-const data2 = [
-    { x: mock.data.score * 100, fill: 'var(--primary-color)' },
-    // { name: 'B', x: mock.data.score * 100, fill: 'red' },
-    // { name: 'C', x: 3, fill: 'aqua' },
-    // { name: 'D', x: 4, fill: 'blue' },
-    // { name: 'E', x: 5, fill: 'orange' },
-    // { name: 'F', x: 6, fill: 'red' },
-    // { name: 'G', x: 7, fill: 'black' },
-    // { name: 'H', x: 8, fill: 'purple' },
-    // { name: 'I', x: 9, fill: 'gray' },
-];
-
-const percent = mock.data.score * 100;
-
-const style = {
-    top: '50%',
-    right: 0,
-    transform: 'translate(0, -50%)',
-    lineHeight: '24px',
-};
 
 function SimpleRadialBarChart({ data }) {
     const data2 = [
@@ -93,7 +71,7 @@ function SimpleRadialBarChart({ data }) {
 }
 
 SimpleRadialBarChart.propTypes = {
-    data: PropTypes.object
+    data: PropTypes.number
 }
 
 export default SimpleRadialBarChart;

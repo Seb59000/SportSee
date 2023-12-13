@@ -5,7 +5,6 @@ import energy from '../../assets/Images/energy.svg'
 import protein from '../../assets/Images/proteine.svg'
 import apple from '../../assets/Images/Apple.png'
 import fat from '../../assets/Images/fat.svg'
-import mock from '../../data/mock.json'
 import data from '../../data/data'
 import BrushBarChart from '../brushBarChart/BrushBarChart'
 import SimpleLineChart from '../../components/simpleLineChart/SimpleLineChart'
@@ -13,7 +12,8 @@ import SimpleRadarChart from '../../components/simpleRadarChart/SimpleRadarChart
 import SimpleRadialBarChart from '../../components/simpleRadialBarChart/SimpleRadialBarChart'
 import ConsoLayout from '../../components/consoLayout/ConsoLayout'
 
-function Dashboard() {
+function Dashboard({ cas }) {
+    // console.log(cas)
     // console.log(data.USER_MAIN_DATA[0].userInfos)
     return (
         <section id='dashboard'>
@@ -63,10 +63,10 @@ function Dashboard() {
                     </div>
                 </div>
                 <div id="conso">
-                    <ConsoLayout data={mock.data.keyData.calorieCount / 1000} logo={energy} alt="energy" text1="kCal" text2="Calories" id='energyLogo' />
-                    <ConsoLayout data={mock.data.keyData.proteinCount} logo={protein} alt="protéines" text1="g" text2="Protéines" id='proteinLogo' />
-                    <ConsoLayout data={mock.data.keyData.carbohydrateCount} logo={apple} alt="glucides" text1="g" text2="Glucides" id='glucidLogo' />
-                    <ConsoLayout data={mock.data.keyData.carbohydrateCount} logo={fat} alt="lipides" text1="g" text2="Lipides" id='fatLogo' />
+                    <ConsoLayout data={data.USER_MAIN_DATA[1].keyData.calorieCount / 1000} logo={energy} alt="energy" text1="kCal" text2="Calories" id='energyLogo' />
+                    <ConsoLayout data={data.USER_MAIN_DATA[1].keyData.proteinCount} logo={protein} alt="protéines" text1="g" text2="Protéines" id='proteinLogo' />
+                    <ConsoLayout data={data.USER_MAIN_DATA[1].keyData.carbohydrateCount} logo={apple} alt="glucides" text1="g" text2="Glucides" id='glucidLogo' />
+                    <ConsoLayout data={data.USER_MAIN_DATA[1].keyData.carbohydrateCount} logo={fat} alt="lipides" text1="g" text2="Lipides" id='fatLogo' />
                 </div>
             </div>
         </section>

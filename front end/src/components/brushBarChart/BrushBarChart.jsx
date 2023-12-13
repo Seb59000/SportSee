@@ -76,7 +76,7 @@ function BrushBarChart({ data }) {
 }
 
 BrushBarChart.propTypes = {
-    data: PropTypes.object
+    data: PropTypes.array
 }
 
 export default BrushBarChart;
