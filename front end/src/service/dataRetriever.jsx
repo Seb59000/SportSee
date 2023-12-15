@@ -1,0 +1,98 @@
+import { useState, useEffect } from 'react'
+import dataMocked from '../data/data'
+import axios from 'axios'
+
+// function DataRetriever() {
+//     const [data, setData] = useState(null);
+
+//     useEffect(() => {
+//         async function fetchData() {
+//             const response = await axios.get('http://localhost:3000/user/12/performance');
+//             setData(response.data.data.data);
+//             console.log(response.data)
+//         }
+//         fetchData();
+//     }, []);
+
+//     const [logementsList, setLogementsList] = useState([])
+//     const [isLoading, setLoading] = useState(true)
+//     const [error, setError] = useState(false)
+
+//     // useEffect(() => {
+//     //     if (!url) return
+//     //     setLoading(true)
+//     //     async function fetchLogements() {
+//     //         try {
+//     //             const response = await fetch(url);
+//     //             const logementsList = await response.json()
+//     //             setLogementsList(logementsList)
+//     //         } catch (err) {
+//     //             console.log('===== error =====', err)
+//     //             setError(true)
+//     //         } finally {
+//     //             setLoading(false)
+//     //         }
+//     //     }
+//     //     fetchLogements()
+//     // }, [url])
+//     return { data, isLoading, logementsList, error }
+// }
+
+// export default DataRetriever
+
+// import axios from 'axios';
+
+const DataRetriever = async (cas) => {
+    // console.log(cas);
+    let results = []
+    switch (cas) {
+        case 1:
+            results.push(dataMocked.USER_MAIN_DATA[0].userInfos.firstName)
+            results.push(dataMocked.USER_ACTIVITY[0].sessions)
+            results.push(dataMocked.USER_AVERAGE_SESSIONS[0])
+            results.push(dataMocked.USER_PERFORMANCE[0].data)
+            results.push(dataMocked.USER_MAIN_DATA[0].score * 100)
+            results.push(dataMocked.USER_MAIN_DATA[0].score)
+            results.push(dataMocked.USER_MAIN_DATA[0].keyData.calorieCount / 1000)
+            results.push(dataMocked.USER_MAIN_DATA[0].keyData.proteinCount)
+            results.push(dataMocked.USER_MAIN_DATA[0].keyData.carbohydrateCount)
+            results.push(dataMocked.USER_MAIN_DATA[0].keyData.lipidCount)
+            break;
+        case 2:
+            results.push(dataMocked.USER_MAIN_DATA[1].userInfos.firstName)
+            results.push(dataMocked.USER_ACTIVITY[1].sessions)
+            results.push(dataMocked.USER_AVERAGE_SESSIONS[1])
+            results.push(dataMocked.USER_PERFORMANCE[1].data)
+            results.push(dataMocked.USER_MAIN_DATA[1].score * 100)
+            results.push(dataMocked.USER_MAIN_DATA[1].score)
+            results.push(dataMocked.USER_MAIN_DATA[1].keyData.calorieCount / 1000)
+            results.push(dataMocked.USER_MAIN_DATA[1].keyData.proteinCount)
+            results.push(dataMocked.USER_MAIN_DATA[1].keyData.carbohydrateCount)
+            results.push(dataMocked.USER_MAIN_DATA[1].keyData.lipidCount)
+            break;
+        case 3:
+            const mainData = await axios.get('http://localhost:3000/user/12')
+            const userActivity = await axios.get('http://localhost:3000/user/12/activity')
+            const userAverageSessions = await axios.get('http://localhost:3000/user/12/average-sessions')
+            const perfs = await axios.get('http://localhost:3000/user/12/performance')
+            results.push(mainData.data.data.userInfos.firstName)
+            results.push(userActivity.data.data.sessions)
+            results.push(userAverageSessions.data.data)
+            results.push(perfs.data.data.data)
+            results.push(mainData.data.data.todayScore * 100)
+            results.push(mainData.data.data.todayScore)
+            results.push(mainData.data.data.keyData.calorieCount / 1000)
+            results.push(mainData.data.data.keyData.proteinCount)
+            results.push(mainData.data.data.keyData.carbohydrateCount)
+            results.push(mainData.data.data.keyData.lipidCount)
+            console.log(mainData.data.data.keyData.calorieCount / 1000)
+            console.log(dataMocked.USER_MAIN_DATA[0].score)
+            break;
+        default:
+            break;
+    }
+
+    return results
+}
+
+export default DataRetriever

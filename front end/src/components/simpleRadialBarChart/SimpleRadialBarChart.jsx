@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 function SimpleRadialBarChart({ data }) {
     const data2 = [
-        { x: data * 100, fill: 'var(--primary-color)' },
+        { x: 30, fill: 'var(--primary-color)' },
         // { name: 'B', x: mock.data.score * 100, fill: 'red' },
         // { name: 'C', x: 3, fill: 'aqua' },
         // { name: 'D', x: 4, fill: 'blue' },
@@ -14,21 +14,24 @@ function SimpleRadialBarChart({ data }) {
         // { name: 'H', x: 8, fill: 'purple' },
         // { name: 'I', x: 9, fill: 'gray' },
     ];
+    console.log(data);
+    console.log(data2);
 
     return (
         // <div id="test">
-        <ResponsiveContainer width={295} height={290} id="radialChart">
+        <ResponsiveContainer width={150} height={150} id="radialChart">
+            {/* <ResponsiveContainer width={295} height={290} id="radialChart"> */}
             {/* <ResponsiveContainer width="100%" aspect={1} id="radialChart"> */}
             {/* <h2 id="radialChartTitle">Score</h2> */}
             <RadialBarChart data={data2}
                 // <RadialBarChart width={143} height={143} data={data2}
                 // cx={30 / 2}
                 // cy={30 / 2}
-                innerRadius={100}
-                outerRadius={115}
+                innerRadius={60}
+                outerRadius={80}
                 // barSize={10}
                 startAngle={230}
-                endAngle={10}>
+                endAngle={-230}>
                 <PolarAngleAxis
                     type="number"
                     domain={[0, 10]}

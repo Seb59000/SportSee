@@ -149,7 +149,8 @@ function SimpleLineChart({ data }) {
         // </div>
 
         <div id="simpleLineChartContainer">
-            <ResponsiveContainer width={310} height={280} id="simpleLineChart">
+            <ResponsiveContainer width={230} height={200} id="simpleLineChart">
+                {/* <ResponsiveContainer width={310} height={280} id="simpleLineChart"> */}
                 {/* <ResponsiveContainer width="100%" aspect={1} id="simpleLineChart"> */}
                 {/* <LineChart width={300} height={100} data={mock.data.averageSessions}>
                     <Legend content={renderLegend} align='right' />
