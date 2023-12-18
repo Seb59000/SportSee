@@ -1,35 +1,17 @@
-import { RadialBarChart, RadialBar, PolarAngleAxis, Legend, ResponsiveContainer } from 'recharts';
+import { RadialBarChart, RadialBar, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 import './SimpleRadialBarChart.css'
 import PropTypes from 'prop-types';
 
 function SimpleRadialBarChart({ data }) {
     const data2 = [
-        { x: 30, fill: 'var(--primary-color)' },
-        // { name: 'B', x: mock.data.score * 100, fill: 'red' },
-        // { name: 'C', x: 3, fill: 'aqua' },
-        // { name: 'D', x: 4, fill: 'blue' },
-        // { name: 'E', x: 5, fill: 'orange' },
-        // { name: 'F', x: 6, fill: 'red' },
-        // { name: 'G', x: 7, fill: 'black' },
-        // { name: 'H', x: 8, fill: 'purple' },
-        // { name: 'I', x: 9, fill: 'gray' },
+        { x: data * 10, fill: 'var(--primary-color)' },
     ];
-    console.log(data);
-    console.log(data2);
 
     return (
-        // <div id="test">
-        <ResponsiveContainer width={150} height={150} id="radialChart">
-            {/* <ResponsiveContainer width={295} height={290} id="radialChart"> */}
-            {/* <ResponsiveContainer width="100%" aspect={1} id="radialChart"> */}
-            {/* <h2 id="radialChartTitle">Score</h2> */}
+        <ResponsiveContainer width="100%" aspect={1} id="radialChart" minWidth={210}>
             <RadialBarChart data={data2}
-                // <RadialBarChart width={143} height={143} data={data2}
-                // cx={30 / 2}
-                // cy={30 / 2}
-                innerRadius={60}
-                outerRadius={80}
-                // barSize={10}
+                innerRadius="65%"
+                outerRadius="85%"
                 startAngle={230}
                 endAngle={-230}>
                 <PolarAngleAxis
@@ -38,37 +20,27 @@ function SimpleRadialBarChart({ data }) {
                     angleAxisId={0}
                     tick={false}
                 />
-                {/* <text
-                        x={100}
-                        y={20}
-                        textAnchor="top"
-                        dominantBaseline="top"
-                    >
-                        Score
-                    </text> */}
+                <text id='radialChartTitle'
+                    x={10}
+                    y={20}
+                >
+                    Score
+                </text>
 
                 <RadialBar
-                    background
+                    background={false}
                     dataKey="x"
                     cornerRadius={30 / 2}
                     fill="#0BEFF2"
                 />
-                {/* <text x={170} y={180}>{percent}</text>
-                    <text x={190} y={180}>%</text>
-                    <text x={170} y={200}>de votre</text>
-                    <text x={170} y={220}>objectif</text> */}
+                <text className='score'
+                    x="45%" y="50%"
+                    textAnchor="start"
+                >{data * 100}</text>
+                <text className='score' x="62%" y="50%">%</text>
+                <text x="43%" y="60%">de votre</text>
+                <text x="43%" y="70%">objectif</text>
             </RadialBarChart>
-            {/* <RadialBarChart cx="50%" cy="50%" innerRadius="10%" outerRadius="80%" barSize={10} data={data}>
-                    <RadialBar
-                        minAngle={15}
-                        label={{ position: 'insideStart', fill: '#fff' }}
-                        clockWise
-                        dataKey="uv"
-                        cornerRadius={20}
-                    />
-
-                    <Legend iconSize={10} layout="vertical" verticalAlign="middle" wrapperStyle={style} />
-                </RadialBarChart> */}
         </ResponsiveContainer>
     );
 }

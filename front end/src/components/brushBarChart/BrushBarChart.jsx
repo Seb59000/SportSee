@@ -32,23 +32,10 @@ const CustomTick = ({ index, x, y }) => {
 };
 
 function BrushBarChart({ data }) {
-
-    // console.log(data)
-    const dataFormated = data.map(function (item) {
-        // item.calories = item.calories / 10
-        return item;
-    });
-    // console.log(dataFormated)
     return (
-        // <ResponsiveContainer height={170} aspect={3} id="brushBarChart">
-        <ResponsiveContainer height={170} width="100%" id="brushBarChart">
-            {/* <ResponsiveContainer width={1050} height={210} id="brushBarChart"> */}
-            {/* <ResponsiveContainer maxHeight={400} width="100%" aspect={5} > */}
-            {/* {console.log(mock.data.averageSessions)} */}
+        <ResponsiveContainer height={180} width="100%" id="brushBarChart">
             <BarChart
-                // width={820}
-                // height={300}
-                data={dataFormated}
+                data={data}
                 margin={{
                     top: 5,
                     right: 30,

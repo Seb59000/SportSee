@@ -12,7 +12,7 @@ root.render(
         <Route path="/" element={<Home cas={1} />} />
         <Route path="/profil" element={<Home cas={2} />} />
         <Route path="/reglage" element={<Home cas={3} />} />
-        <Route path="/communaute" element={<Home cas={4} />} />
+        <Route path="/communaute" element={<Home cas={3} />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

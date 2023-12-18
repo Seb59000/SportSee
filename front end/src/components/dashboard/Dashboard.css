@@ -32,18 +32,13 @@ h2 {
 }
 
 #lineChartContainer {
-    text-align: -webkit-center;
-    /* width: 250px;
-    height: 230px; */
     background: var(--primary-color);
     border-radius: 0.5em;
-    padding: 1em 0.1em 0 0.1em;
-    margin-top: 1em;
 }
 
 #lineChart-title {
     position: absolute;
-    margin: 0 1em;
+    margin: 0.5em 1em;
     color: #fdfdfd87;
     font-size: 18px;
 }
@@ -53,7 +48,6 @@ h2 {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 1.5em;
-    /* max-width: 1000px; */
 }
 
 .graphHeader {
@@ -80,17 +74,20 @@ h2 {
 }
 
 #conso {
-    padding: 0 0 0 6%;
+    padding: 0 0 0 2%;
+    width: 30%;
 }
 
 #graphsLayout {
     display: flex;
     justify-content: space-between;
     margin: 1em 0 0 -3em;
+    width: 110%;
+    margin-bottom: 2em;
 }
 
 #graphs {
-    width: 65%;
+    width: 80%;
 }
 
 .score {

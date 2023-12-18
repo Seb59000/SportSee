@@ -1,49 +1,7 @@
-import { useState, useEffect } from 'react'
 import dataMocked from '../data/data'
 import axios from 'axios'
 
-// function DataRetriever() {
-//     const [data, setData] = useState(null);
-
-//     useEffect(() => {
-//         async function fetchData() {
-//             const response = await axios.get('http://localhost:3000/user/12/performance');
-//             setData(response.data.data.data);
-//             console.log(response.data)
-//         }
-//         fetchData();
-//     }, []);
-
-//     const [logementsList, setLogementsList] = useState([])
-//     const [isLoading, setLoading] = useState(true)
-//     const [error, setError] = useState(false)
-
-//     // useEffect(() => {
-//     //     if (!url) return
-//     //     setLoading(true)
-//     //     async function fetchLogements() {
-//     //         try {
-//     //             const response = await fetch(url);
-//     //             const logementsList = await response.json()
-//     //             setLogementsList(logementsList)
-//     //         } catch (err) {
-//     //             console.log('===== error =====', err)
-//     //             setError(true)
-//     //         } finally {
-//     //             setLoading(false)
-//     //         }
-//     //     }
-//     //     fetchLogements()
-//     // }, [url])
-//     return { data, isLoading, logementsList, error }
-// }
-
-// export default DataRetriever
-
-// import axios from 'axios';
-
 const DataRetriever = async (cas) => {
-    // console.log(cas);
     let results = []
     switch (cas) {
         case 1:

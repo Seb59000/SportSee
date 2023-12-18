@@ -14,10 +14,6 @@ function SideBar() {
                     <li><button><img src={cycle} alt='vélo'></img></button></li>
                     <li><button><img src={alter} alt='musculation'></img></button></li>
                 </ul>
-
-
-
-
             </nav>
             <div id='copyright'>Copyright, SportSee 2020</div>
         </div>

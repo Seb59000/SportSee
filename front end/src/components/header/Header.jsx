@@ -13,10 +13,6 @@ function Home() {
                 <Link className='main-nav' to="/profil">Profil</Link>
                 <Link className='main-nav' to="/reglage">Réglages</Link>
                 <Link className='main-nav' to="/communaute">Communauté</Link>
-                {/* <button className='main-nav'><Link to="/">Accueil</Link></button>
-                <button className='main-nav'>Profil</button>
-                <button className='main-nav'>Réglages</button>
-                <button className='main-nav'>Communauté</button> */}
             </nav>
         </header>
     );

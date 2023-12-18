@@ -1,11 +1,14 @@
 #radarChartContainer {
-    /* width: 33%; */
+    align-self: center;
+    width: 35%;
     margin: 1em 0 0 1em;
-    /* height: 20em; */
+    background: #282D30;
+    border-radius: 0.5em;
 }
 
 #radarChart {
     background: #282D30;
     border-radius: 0.5em;
-    padding: 2em 1em 1em 1em;
+    margin: 0 1em;
+    max-width: 310px;
 }

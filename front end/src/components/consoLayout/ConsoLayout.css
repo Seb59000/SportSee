@@ -13,6 +13,7 @@
 .consoLayout {
     display: flex;
     margin-bottom: 3em;
+    flex-direction: row-reverse
 }
 
 #energyLogo {

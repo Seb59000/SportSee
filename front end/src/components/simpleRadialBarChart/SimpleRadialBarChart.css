@@ -6,21 +6,20 @@
 
     position: absolute;
     padding: 1em;
-    /* margin: 1.2em; */
 }
 
 #radialChartContainer {
     margin: 1em;
+    width: 25%;
 }
 
 #radialChart {
-    border-radius: 1em;
-    margin: -2em 1em;
+    max-width: 310px;
 }
 
 #radialChartText {
     position: relative;
-    top: 108px;
-    left: 5px;
+    top: 130px;
+    right: 10%;
     text-align: center;
 }
