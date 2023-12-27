@@ -1,4 +1,5 @@
 import './Dashboard.css';
+import { useParams } from 'react-router-dom'
 import BlackDot from '../../assets/Images/BlackDot.png'
 import RedDot from '../../assets/Images/RedDot.png'
 import energy from '../../assets/Images/energy.svg'
@@ -14,16 +15,17 @@ import React, { useState, useEffect } from 'react';
 import DataRetriever from '../../service/dataRetriever.jsx';
 
 
-function Dashboard({ cas }) {
+function Dashboard() {
     const [data, setData] = useState([]);
+    let { mock, id } = useParams()
 
     useEffect(() => {
         async function fetchData() {
-            const response = await DataRetriever(cas);
+            const response = await DataRetriever(mock, id);
             setData(response);
         }
         fetchData();
-    }, [cas]);
+    }, [id, mock]);
 
     if (data === undefined) {
         return (

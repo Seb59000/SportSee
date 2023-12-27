@@ -1,52 +1,83 @@
 import dataMocked from '../data/data'
-import axios from 'axios'
+import { getUser, getActivity, getAverageSessions, getPerfs } from './APIControler.js';
 
-const DataRetriever = async (cas) => {
+/**
+ * switch entre API et mock
+ * 
+ * @param {*} cas 
+ * @param {*} userId 
+ */
+const DataRetriever = async (cas, userId) => {
+    if (cas === undefined || userId === undefined) {
+        cas = "mock";
+        userId = 0;
+    }
     let results = []
     switch (cas) {
-        case 1:
-            results.push(dataMocked.USER_MAIN_DATA[0].userInfos.firstName)
-            results.push(dataMocked.USER_ACTIVITY[0].sessions)
-            results.push(dataMocked.USER_AVERAGE_SESSIONS[0])
-            results.push(dataMocked.USER_PERFORMANCE[0].data)
-            results.push(dataMocked.USER_MAIN_DATA[0].score * 100)
-            results.push(dataMocked.USER_MAIN_DATA[0].score)
-            results.push(dataMocked.USER_MAIN_DATA[0].keyData.calorieCount / 1000)
-            results.push(dataMocked.USER_MAIN_DATA[0].keyData.proteinCount)
-            results.push(dataMocked.USER_MAIN_DATA[0].keyData.carbohydrateCount)
-            results.push(dataMocked.USER_MAIN_DATA[0].keyData.lipidCount)
+        case "mock":
+            // utilisation des données mockées
+            results.push(dataMocked.USER_MAIN_DATA[userId].userInfos.firstName)
+            results.push(dataMocked.USER_ACTIVITY[userId].sessions)
+            results.push(dataMocked.USER_AVERAGE_SESSIONS[userId])
+            results.push(dataMocked.USER_PERFORMANCE[userId].data)
+            results.push(dataMocked.USER_MAIN_DATA[userId].score * 100)
+            results.push(dataMocked.USER_MAIN_DATA[userId].score)
+            results.push(dataMocked.USER_MAIN_DATA[userId].keyData.calorieCount / 1000)
+            results.push(dataMocked.USER_MAIN_DATA[userId].keyData.proteinCount)
+            results.push(dataMocked.USER_MAIN_DATA[userId].keyData.carbohydrateCount)
+            results.push(dataMocked.USER_MAIN_DATA[userId].keyData.lipidCount)
             break;
-        case 2:
-            results.push(dataMocked.USER_MAIN_DATA[1].userInfos.firstName)
-            results.push(dataMocked.USER_ACTIVITY[1].sessions)
-            results.push(dataMocked.USER_AVERAGE_SESSIONS[1])
-            results.push(dataMocked.USER_PERFORMANCE[1].data)
-            results.push(dataMocked.USER_MAIN_DATA[1].score * 100)
-            results.push(dataMocked.USER_MAIN_DATA[1].score)
-            results.push(dataMocked.USER_MAIN_DATA[1].keyData.calorieCount / 1000)
-            results.push(dataMocked.USER_MAIN_DATA[1].keyData.proteinCount)
-            results.push(dataMocked.USER_MAIN_DATA[1].keyData.carbohydrateCount)
-            results.push(dataMocked.USER_MAIN_DATA[1].keyData.lipidCount)
-            break;
-        case 3:
-            const mainData = await axios.get('http://localhost:3000/user/12')
-            const userActivity = await axios.get('http://localhost:3000/user/12/activity')
-            const userAverageSessions = await axios.get('http://localhost:3000/user/12/average-sessions')
-            const perfs = await axios.get('http://localhost:3000/user/12/performance')
+        case "API":
+            // utilisation des données de l'API
+            const mainData = await getUser(userId)
+            const userActivity = await getActivity(userId)
+            const userAverageSessions = await getAverageSessions(userId)
+            const perfs = await getPerfs(userId)
+
+            // si l'API renvoie "error" on renvoie les données mockées du user 0
+            if (mainData === "error" || userActivity === "error" || userAverageSessions === "error" || perfs === "error") {
+                userId = 0
+                results.push(dataMocked.USER_MAIN_DATA[userId].userInfos.firstName)
+                results.push(dataMocked.USER_ACTIVITY[userId].sessions)
+                results.push(dataMocked.USER_AVERAGE_SESSIONS[userId])
+                results.push(dataMocked.USER_PERFORMANCE[userId].data)
+                results.push(dataMocked.USER_MAIN_DATA[userId].score * 100)
+                results.push(dataMocked.USER_MAIN_DATA[userId].score)
+                results.push(dataMocked.USER_MAIN_DATA[userId].keyData.calorieCount / 1000)
+                results.push(dataMocked.USER_MAIN_DATA[userId].keyData.proteinCount)
+                results.push(dataMocked.USER_MAIN_DATA[userId].keyData.carbohydrateCount)
+                results.push(dataMocked.USER_MAIN_DATA[userId].keyData.lipidCount)
+                break;
+            }
             results.push(mainData.data.data.userInfos.firstName)
             results.push(userActivity.data.data.sessions)
             results.push(userAverageSessions.data.data)
             results.push(perfs.data.data.data)
-            results.push(mainData.data.data.todayScore * 100)
-            results.push(mainData.data.data.todayScore)
+            if (mainData.data.data.todayScore === undefined) {
+                results.push(mainData.data.data.score * 100)
+                results.push(mainData.data.data.score)
+            } else {
+                results.push(mainData.data.data.todayScore * 100)
+                results.push(mainData.data.data.todayScore)
+            }
             results.push(mainData.data.data.keyData.calorieCount / 1000)
             results.push(mainData.data.data.keyData.proteinCount)
             results.push(mainData.data.data.keyData.carbohydrateCount)
             results.push(mainData.data.data.keyData.lipidCount)
-            console.log(mainData.data.data.keyData.calorieCount / 1000)
-            console.log(dataMocked.USER_MAIN_DATA[0].score)
             break;
         default:
+            // par défaut on renvoie le mock du user 0
+            userId = 0
+            results.push(dataMocked.USER_MAIN_DATA[userId].userInfos.firstName)
+            results.push(dataMocked.USER_ACTIVITY[userId].sessions)
+            results.push(dataMocked.USER_AVERAGE_SESSIONS[userId])
+            results.push(dataMocked.USER_PERFORMANCE[userId].data)
+            results.push(dataMocked.USER_MAIN_DATA[userId].score * 100)
+            results.push(dataMocked.USER_MAIN_DATA[userId].score)
+            results.push(dataMocked.USER_MAIN_DATA[userId].keyData.calorieCount / 1000)
+            results.push(dataMocked.USER_MAIN_DATA[userId].keyData.proteinCount)
+            results.push(dataMocked.USER_MAIN_DATA[userId].keyData.carbohydrateCount)
+            results.push(dataMocked.USER_MAIN_DATA[userId].keyData.lipidCount)
             break;
     }
 

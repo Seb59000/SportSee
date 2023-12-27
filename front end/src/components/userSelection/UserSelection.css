@@ -1,0 +1,20 @@
+#profil-nav {
+    text-align-last: center;
+    padding-top: 4em;
+    width: 40%;
+    margin: auto;
+}
+
+#profil-nav nav {
+    display: grid;
+    padding-top: 4em;
+}
+
+.profil-nav-btn {
+    margin: 2em;
+    text-decoration: none;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    border-radius: 2px;
+}

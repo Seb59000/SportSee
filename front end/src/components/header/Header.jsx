@@ -2,7 +2,7 @@ import './Header.css';
 import logo from '../../assets/Images/logo.png'
 import { Link } from 'react-router-dom'
 
-function Home() {
+function Header() {
     return (
         <header>
             <img src={logo} alt="SportSee">
@@ -18,4 +18,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default Header;
