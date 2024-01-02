@@ -27,51 +27,45 @@ function Dashboard() {
         fetchData();
     }, [id, mock]);
 
-    if (data === undefined) {
-        return (
-            <section id='dashboard'>
-            </section>
-        )
-    } else {
-        return (
-            <section id='dashboard'>
-                <hgroup>
-                    <h2>Bonjour <span className='red'>{data[0]}</span></h2>
-                    <p id="evaluation">Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
-                </hgroup>
-                <div id='graphsContainer'>
-                    <div id='graphs'>
-                        <hgroup className='graphHeaderContainer'>
-                            <h2 className='graphHeader'>Activité quotidienne</h2>
-                            <div className='graphLegend grey'>
-                                <img className='dot' src={BlackDot} alt=''></img>
-                                <p>
-                                    Poids (kg)
-                                </p>
-                                <img className='dot' src={RedDot} alt=''></img>
-                                <p>
-                                    Calories brûlées (kCal)
-                                </p>
-                            </div>
-                        </hgroup>
-                        <BrushBarChart data={data[1] ?? []} />
-                        <div id="graphsLayout">
-                            <h2 id='lineChart-title'>Durée moyenne des <br />sessions</h2>
-                            <SimpleLineChart data={data[2] ?? {}} />
-                            <SimpleRadarChart data={data[3] ?? []} />
-                            <SimpleRadialBarChart data={data[5] ?? 0} />
+    return (
+        <section id='dashboard'>
+            <hgroup>
+                <h2>Bonjour <span className='red'>{data[0]}</span></h2>
+                <p id="evaluation">Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+            </hgroup>
+            <div id='graphsContainer'>
+                <div id='graphs'>
+                    <hgroup className='graphHeaderContainer'>
+                        <h2 className='graphHeader'>Activité quotidienne</h2>
+                        <div className='graphLegend grey'>
+                            <img className='dot' src={BlackDot} alt=''></img>
+                            <p>
+                                Poids (kg)
+                            </p>
+                            <img className='dot' src={RedDot} alt=''></img>
+                            <p>
+                                Calories brûlées (kCal)
+                            </p>
                         </div>
-                    </div>
-                    <div id="conso">
-                        <ConsoLayout key={1} data={data[6] ?? 0} logo={energy} alt="energy" text1="kCal" text2="Calories" id='energyLogo' />
-                        <ConsoLayout key={2} data={data[7]} logo={protein} alt="protéines" text1="g" text2="Protéines" id='proteinLogo' />
-                        <ConsoLayout key={3} data={data[8]} logo={apple} alt="glucides" text1="g" text2="Glucides" id='glucidLogo' />
-                        <ConsoLayout key={4} data={data[9]} logo={fat} alt="lipides" text1="g" text2="Lipides" id='fatLogo' />
+                    </hgroup>
+                    <BrushBarChart data={data[1] ?? []} />
+                    <div id="graphsLayout">
+                        <h2 id='lineChart-title'>Durée moyenne des <br />sessions</h2>
+                        <SimpleLineChart data={data[2] ?? {}} />
+                        <SimpleRadarChart data={data[3] ?? []} />
+                        <SimpleRadialBarChart data={data[5] ?? 0} />
                     </div>
                 </div>
-            </section>
-        );
-    }
+                <div id="conso">
+                    <ConsoLayout key={1} data={data[6] ?? 0} logo={energy} alt="energy" text1="kCal" text2="Calories" id='energyLogo' />
+                    <ConsoLayout key={2} data={data[7]} logo={protein} alt="protéines" text1="g" text2="Protéines" id='proteinLogo' />
+                    <ConsoLayout key={3} data={data[8]} logo={apple} alt="glucides" text1="g" text2="Glucides" id='glucidLogo' />
+                    <ConsoLayout key={4} data={data[9]} logo={fat} alt="lipides" text1="g" text2="Lipides" id='fatLogo' />
+                </div>
+            </div>
+        </section>
+    );
+
 }
 
 export default Dashboard;
