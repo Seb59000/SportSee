@@ -8,10 +8,12 @@ import { getUser, getActivity, getAverageSessions, getPerfs } from './APIControl
  * @param {*} userId 
  */
 const DataRetriever = async (cas, userId) => {
+    // si params non définis
     if (cas === undefined || userId === undefined) {
         cas = "mock";
         userId = 0;
     }
+
     let results = []
     switch (cas) {
         case "mock":
@@ -47,6 +49,7 @@ const DataRetriever = async (cas, userId) => {
                 results.push(dataMocked.USER_MAIN_DATA[userId].keyData.proteinCount)
                 results.push(dataMocked.USER_MAIN_DATA[userId].keyData.carbohydrateCount)
                 results.push(dataMocked.USER_MAIN_DATA[userId].keyData.lipidCount)
+                alert("Connexion API défaillante, les données du mock ont été chargées.");
                 break;
             }
             results.push(mainData.data.data.userInfos.firstName)

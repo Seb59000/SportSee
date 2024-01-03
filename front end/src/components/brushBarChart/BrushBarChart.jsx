@@ -2,7 +2,6 @@ import './BrushBarChart.css';
 import {
     BarChart,
     Bar,
-    ReferenceLine,
     XAxis,
     YAxis,
     Tooltip,
@@ -23,17 +22,14 @@ const CustomTooltip = ({ active, payload }) => {
     return null;
 };
 
-const CustomTick = ({ index, x, y }) => {
-    return (
-        <text x={x - 5} y={y + 20}>
-            {index + 1}
-        </text>
-    );
-};
-
 function BrushBarChart({ data }) {
+    const daysNumbers = () => {
+
+        return data.map((session, index) => index + 1);
+
+    }
     return (
-        <ResponsiveContainer height={180} width="100%" id="brushBarChart">
+        <ResponsiveContainer width="100%" height={180} id="brushBarChart" >
             <BarChart
                 data={data}
                 margin={{
@@ -41,22 +37,53 @@ function BrushBarChart({ data }) {
                     right: 30,
                     left: 20,
                     bottom: 5,
+
                 }}
+                maxBarSize={8}
+                barGap={"-100"}
             >
-                <CartesianGrid
-                    strokeDasharray="2 2"
-                    vertical={false}
+                <CartesianGrid strokeDasharray="2 2" vertical={false} />
+                <XAxis
+                    dataKey={daysNumbers}
+                    padding={{ left: -22, right: -22 }}
+                    tickLine={false}
+                    tickMargin={15}
                 />
-                <XAxis scale='point' tickLine={false} tick={<CustomTick />} stroke='white' />
-                <YAxis orientation='right' axisLine={false} tickLine={false} tickCount={3} type="number" data="kilogram" domain={[69, 'auto']} tickMargin={50} />
+                <YAxis
+                    yAxisId="kg"
+                    dataKey="kilogram"
+                    domain={["dataMin - 2", "dataMax + 1"]}
+                    allowDecimals={false}
+                    dx={30}
+                    orientation="right"
+                    axisLine={false}
+                    tickLine={false}
+                />
+                <YAxis
+                    yAxisId="cal"
+                    dataKey="calories"
+                    hide={true}
+                    orientation="left"
+                    axisLine={false}
+                    tickLine={false}
+                />
                 <Tooltip
                     animationEasing="ease-out"
                     content={<CustomTooltip />}
                     offset={40}
                 />
-                <ReferenceLine y={0} stroke="#000" />
-                <Bar dataKey="kilogram" fill="#282D30" barSize={10} radius={[10, 10, 0, 0]} />
-                <Bar dataKey="calories" fill="var(--primary-color)" barSize={10} radius={[10, 10, 0, 0]} />
+                <Bar
+                    yAxisId="kg"
+                    dataKey="kilogram"
+                    fill="#282D30"
+                    radius={[10, 10, 0, 0]}
+                />
+                <Bar
+                    yAxisId="cal"
+                    dataKey="calories"
+                    fill="var(--primary-color)"
+                    radius={[10, 10, 0, 0]}
+                />
             </BarChart>
         </ResponsiveContainer>
     );

@@ -25,14 +25,14 @@ const CustomTick = ({ index, x, y, cx, cy }) => {
 
     let yTransformed
     if (y < 40) {
-        yTransformed = y - 10;
+        yTransformed = y - 15;
     }
     else if (y < 100) {
         yTransformed = y - 20;
     } else if (y >= 100 && y < 180) {
         yTransformed = y + 20;
     } else {
-        yTransformed = y + 10;
+        yTransformed = y + 15;
     }
 
     return (
