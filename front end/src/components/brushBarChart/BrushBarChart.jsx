@@ -9,25 +9,9 @@ import {
     ResponsiveContainer,
 } from 'recharts';
 import PropTypes from 'prop-types';
-
-const CustomTooltip = ({ active, payload }) => {
-    if (active && payload && payload.length) {
-        return (
-            <div className="tooltip">
-                <p className="tooltip-label">{`${payload[0].value}Kg`}</p>
-                <p className="tooltip-label">{`${payload[1].value}Kcal`}</p>
-            </div>
-        );
-    }
-    return null;
-};
+import { daysNumbers, CustomTooltip } from '../../service/format/brushBarTooltip'
 
 function BrushBarChart({ data }) {
-    const daysNumbers = () => {
-
-        return data.map((session, index) => index + 1);
-
-    }
     return (
         <ResponsiveContainer width="100%" height={180} id="brushBarChart" >
             <BarChart
@@ -44,7 +28,7 @@ function BrushBarChart({ data }) {
             >
                 <CartesianGrid strokeDasharray="2 2" vertical={false} />
                 <XAxis
-                    dataKey={daysNumbers}
+                    dataKey={daysNumbers(data)}
                     padding={{ left: -22, right: -22 }}
                     tickLine={false}
                     tickMargin={15}
