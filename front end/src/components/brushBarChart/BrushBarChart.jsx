@@ -58,6 +58,7 @@ function BrushBarChart({ data }) {
                     orientation="right"
                     axisLine={false}
                     tickLine={false}
+                    tickCount={3}
                 />
                 <YAxis
                     yAxisId="cal"

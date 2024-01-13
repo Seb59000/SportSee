@@ -2,13 +2,13 @@ import Header from '../../components/header/Header'
 import SideBar from '../../components/sideBar/SideBar'
 import Dashboard from '../../components/dashboard/Dashboard'
 
-function Home({ cas, userId }) {
+function Home() {
     return (
         <div>
             < Header />
             <main>
                 < SideBar />
-                < Dashboard cas={cas} userId={userId} />
+                < Dashboard />
             </main>
         </div>
     );

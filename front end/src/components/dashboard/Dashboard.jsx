@@ -57,10 +57,10 @@ function Dashboard() {
                     </div>
                 </div>
                 <div id="conso">
-                    <ConsoLayout key={1} data={data[6] ?? 0} logo={energy} alt="energy" text1="kCal" text2="Calories" id='energyLogo' />
-                    <ConsoLayout key={2} data={data[7]} logo={protein} alt="protéines" text1="g" text2="Protéines" id='proteinLogo' />
-                    <ConsoLayout key={3} data={data[8]} logo={apple} alt="glucides" text1="g" text2="Glucides" id='glucidLogo' />
-                    <ConsoLayout key={4} data={data[9]} logo={fat} alt="lipides" text1="g" text2="Lipides" id='fatLogo' />
+                    <ConsoLayout data={data[6] ?? 0} logo={energy} alt="energy" text1="kCal" text2="Calories" id='energyLogo' />
+                    <ConsoLayout data={data[7]} logo={protein} alt="protéines" text1="g" text2="Protéines" id='proteinLogo' />
+                    <ConsoLayout data={data[8]} logo={apple} alt="glucides" text1="g" text2="Glucides" id='glucidLogo' />
+                    <ConsoLayout data={data[9]} logo={fat} alt="lipides" text1="g" text2="Lipides" id='fatLogo' />
                 </div>
             </div>
         </section>
