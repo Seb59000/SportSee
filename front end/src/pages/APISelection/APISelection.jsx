@@ -6,7 +6,7 @@ function APISelection() {
         <div>
             < Header />
             <main>
-                < UserSelection cas="API" />
+                < UserSelection />
             </main>
         </div>
     );

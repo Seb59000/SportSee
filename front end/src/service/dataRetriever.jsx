@@ -49,7 +49,7 @@ const DataRetriever = async (cas, userId) => {
                 results.push(dataMocked.USER_MAIN_DATA[userId].keyData.proteinCount)
                 results.push(dataMocked.USER_MAIN_DATA[userId].keyData.carbohydrateCount)
                 results.push(dataMocked.USER_MAIN_DATA[userId].keyData.lipidCount)
-                alert("Connexion API défaillante, les données du mock ont été chargées.");
+                alert("Connexion API défaillante, les données du mock ont été chargées. Veuillez lancer le backend sur le port 3000 afin de connecter l'API");
                 break;
             }
             results.push(mainData.data.data.userInfos.firstName)
